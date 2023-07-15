@@ -31,5 +31,7 @@ import useReader from "@/composables_or_hooks/use-reader";
 
 const filters=["oceanic", "vintage", "rosetint"];
 const store = useImageStore();
-const { reader } = useReader(store.file);
+const { reader } = useReader(store.file, () => {
+  
+});
 </script>
