@@ -11,8 +11,9 @@
             'bg-green-600': store.filter === filter,
 
           }"
+        @click="store.filter = store.filter === filter ? '' : filter"
 
-          >{{filter}}</button>
+        >{{filter}}</button>
 
         </div>
         <a class="bg-indigo-700 py-4 block w-full mt-2 text-center">
