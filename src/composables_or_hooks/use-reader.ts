@@ -1,7 +1,9 @@
-export default function useReader(file: File | null) {
-const reader = new FileReader();
+export default function useReader(file: File | null, handleLoad?: EventListener ) {
+    const reader = new FileReader();
 
-if(file) reader.readAsDataURL(file);
+    if(file) reader.readAsDataURL(file);
 
-return { reader };
+    if (handleLoad) reader.addEventListener("load", handleLoad);
+
+    return { reader };
 }
