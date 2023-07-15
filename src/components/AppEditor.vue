@@ -13,3 +13,9 @@
       </div>
     </div>
 </template>
+
+<script setup language="ts">
+
+const filters=["oceanic", "vintage", "rosetint"];
+
+</script>
