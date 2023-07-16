@@ -1,6 +1,6 @@
 <template>
     <div class="my-8">
-      <canvas width="448" height="448"></canvas>
+      <canvas width="448" height="448" ref="canvasEl"></canvas>
       <div class="text-white text-xl mt-4">
         <div class="flex justify-center gap-4">
           <button type="button" class="py-4 w-full"
