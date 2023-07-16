@@ -6,7 +6,7 @@
     
     <AppUpload v-if="!store.file" />
 
-    <AppEditor v-else/>>
+    <AppEditor v-else/>
     
   </div>
   <AppBG />
