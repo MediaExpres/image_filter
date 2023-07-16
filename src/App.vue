@@ -4,10 +4,16 @@
   >
     <h1 class="text-center text-3xl text-indigo-700">Vue Filters</h1>
     
-    <AppUpload />
+    <AppUpload v-if="!store.file" />
 
-    <AppEditor />>
+    <AppEditor v-else/>>
     
   </div>
   <AppBG />
 </template>
+
+<script setup lang="ts">
+import { useImageStore } from './stores/image';
+
+const store = useImageStore();
+</script>
