@@ -29,7 +29,17 @@ function loadImage(url: string) {
 function drawOriginalImage () {
     if(!canvasCtx || !canvasEl.value) return;
 
-    canvasCtx.drawImage(imgEl, 0, 0);
+    const newImageDimension = calculateAspectRatio(
+        imgEl.naturalWidth,
+        imgEl.naturalHeight,
+        448,
+        448
+    );
+
+    canvasEl.value.width = newImageDimension.width;
+    canvasEl.value.height = newImageDimension.height;
+
+    canvasCtx.drawImage(imgEl, 0, 0, newImageDimension.width, newImageDimension.height);
 }
 
 return {
