@@ -27,14 +27,16 @@
 
 import { useImageStore } from "@/stores/image";
 import useReader from "@/composables_or_hooks/use-reader";
+import useCanvas from "@/composables_or_hooks/use-canvas";
 
 
 const filters=["oceanic", "vintage", "rosetint"];
 const store = useImageStore();
+const { canvasEl, loadImage } = useCanvas();
 const { reader } = useReader(store.file, () => {
   if(!reader.result) return;
 
   const dataURL = reader.result.toString();
-  console.log(dataURL);
+  loadImage(dataURL);
 });
 </script>
