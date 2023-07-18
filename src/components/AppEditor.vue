@@ -32,7 +32,7 @@ import useCanvas from "@/composables_or_hooks/use-canvas";
 
 const filters=["oceanic", "vintage", "rosetint"];
 const store = useImageStore();
-const { canvasEl, loadImage } = useCanvas();
+const { canvasEl, loadImage, drawOriginalImage } = useCanvas();
 const { reader } = useReader(store.file, () => {
   if(!reader.result) return;
 
@@ -41,6 +41,6 @@ const { reader } = useReader(store.file, () => {
 });
 
 store.$subscribe(() => {
-  console.log("Subscribed");
+  drawOriginalImage();
 });
 </script>
