@@ -39,4 +39,8 @@ const { reader } = useReader(store.file, () => {
   const dataURL = reader.result.toString();
   loadImage(dataURL);
 });
+
+store.$subscribe(() => {
+  console.log("Subscribed");
+});
 </script>
