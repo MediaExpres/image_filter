@@ -45,5 +45,6 @@ function drawOriginalImage () {
 return {
     canvasEl,
     loadImage,
+    drawOriginalImage,
 }
 }
