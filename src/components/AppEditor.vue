@@ -32,7 +32,8 @@ import useCanvas from "@/composables_or_hooks/use-canvas";
 
 const filters=["oceanic", "vintage", "rosetint"];
 const store = useImageStore();
-const { canvasEl, loadImage, drawOriginalImage } = useCanvas();
+// filterImage was added last in the course
+const { canvasEl, loadImage, drawOriginalImage, filterImage } = useCanvas();
 const { reader } = useReader(store.file, () => {
   if(!reader.result) return;
 
@@ -40,7 +41,10 @@ const { reader } = useReader(store.file, () => {
   loadImage(dataURL);
 });
 
-store.$subscribe(() => {
+// below function notify us of mutations of the state which was added last int the course
+// after adding filterImage(state.filter); we can put the app to a test 
+store.$subscribe((mutation, state) => {
   drawOriginalImage();
+  filterImage(state.filter);
 });
 </script>
