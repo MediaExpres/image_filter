@@ -42,6 +42,10 @@ function drawOriginalImage () {
     canvasCtx.drawImage(imgEl, 0, 0, newImageDimension.width, newImageDimension.height);
 }
 
+function filterImage() {
+
+}
+
 return {
     canvasEl,
     loadImage,
