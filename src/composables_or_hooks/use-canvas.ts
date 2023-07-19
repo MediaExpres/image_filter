@@ -28,7 +28,9 @@ function loadImage(url: string) {
 
 }
 function drawOriginalImage () {
-    // next line provides execution of below code only if canvas exists, the same below at filterImage
+    // MEMO: next line provides execution of below code only if canvas exists, the same below at filterImage
+    // canvasCtx is a variable, canvasEl is a value :)))) 
+
     if(!canvasCtx || !canvasEl.value) return;
 
     const newImageDimension = calculateAspectRatio(
@@ -46,11 +48,20 @@ function drawOriginalImage () {
 
 function filterImage(filterName: string) {
     if(!canvasCtx || !canvasEl.value) return;
+    const photonImage = open_image(canvasEl.value, canvasCtx);
+
+    if(filterName.length) {
+        filter(photonImage, filterName)
+    }
+    // now the filtered image exist only in memory, we have to put it down as follows:
+    putImageData(canvasEl.value, canvasCtx, photonImage)
 }
 
 return {
     canvasEl,
     loadImage,
     drawOriginalImage,
+    // below line exposes filterImage to external sources
+    filterImage
 }
 }
