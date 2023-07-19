@@ -30,7 +30,7 @@ export default defineConfig({
 
   ],
 optimizeDeps: {
-  exclude: ["@sylvia-odwyer/photon"],
+  exclude: ["@silvia-odwyer/photon"],
 },
   resolve: {
     alias: {
