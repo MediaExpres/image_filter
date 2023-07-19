@@ -1,4 +1,5 @@
 import { ref } from "vue";
+import { open_image, filter, putImageData } from "@silvia-odwyer/photon";
 
 export default function useCanvas() {
 const canvasEl = ref<HTMLCanvasElement | null>(null);
@@ -27,6 +28,7 @@ function loadImage(url: string) {
 
 }
 function drawOriginalImage () {
+    // next line provides execution of below code only if canvas exists, the same below at filterImage
     if(!canvasCtx || !canvasEl.value) return;
 
     const newImageDimension = calculateAspectRatio(
@@ -42,8 +44,8 @@ function drawOriginalImage () {
     canvasCtx.drawImage(imgEl, 0, 0, newImageDimension.width, newImageDimension.height);
 }
 
-function filterImage() {
-
+function filterImage(filterName: string) {
+    if(!canvasCtx || !canvasEl.value) return;
 }
 
 return {
