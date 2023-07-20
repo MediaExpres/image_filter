@@ -4,8 +4,9 @@ import { open_image, filter, putImageData } from "@silvia-odwyer/photon";
 export default function useCanvas() {
 const canvasEl = ref<HTMLCanvasElement | null>(null);
 let canvasCtx: CanvasRenderingContext2D | null = null;
-
 const imgEl = new Image();
+// at the end, adding provisory image url in order to download the filtered image
+const canvasImageUrl = ref("");
 
 function calculateAspectRatio(
     srcWidth: number, 
@@ -44,6 +45,9 @@ function drawOriginalImage () {
     canvasEl.value.height = newImageDimension.height;
 
     canvasCtx.drawImage(imgEl, 0, 0, newImageDimension.width, newImageDimension.height);
+    // MEMO the below generate url for the image in the canvas
+    canvasImageUrl.value = canvasEl.value.toDataURL();
+    
 }
 
 function filterImage(filterName: string) {
@@ -54,7 +58,9 @@ function filterImage(filterName: string) {
         filter(photonImage, filterName)
     }
     // now the filtered image exist only in memory, we have to put it down as follows:
-    putImageData(canvasEl.value, canvasCtx, photonImage)
+    putImageData(canvasEl.value, canvasCtx, photonImage);
+    // MEMO exactly as above, after filtering we have an url:
+    canvasImageUrl.value = canvasEl.value.toDataURL();
 }
 
 return {
@@ -62,6 +68,7 @@ return {
     loadImage,
     drawOriginalImage,
     // below line exposes filterImage to external sources
-    filterImage
+    filterImage, 
+    canvasImageUrl,
 }
 }
