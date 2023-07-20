@@ -32,8 +32,8 @@ import useCanvas from "@/composables_or_hooks/use-canvas";
 
 const filters=["oceanic", "vintage", "rosetint"];
 const store = useImageStore();
-// filterImage was added last in the course
-const { canvasEl, loadImage, drawOriginalImage, filterImage } = useCanvas();
+// filterImage was added last in the coursea, and canvasImageURL even later :D
+const { canvasEl, loadImage, drawOriginalImage, filterImage, canvasImageUrl } = useCanvas();
 const { reader } = useReader(store.file, () => {
   if(!reader.result) return;
 
