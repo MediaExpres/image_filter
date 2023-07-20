@@ -16,7 +16,10 @@
         >{{filter}}</button>
 
         </div>
-        <a class="bg-indigo-700 py-4 block w-full mt-2 text-center">
+        <a class="bg-indigo-700 py-4 block w-full mt-2 text-center" 
+        :href="canvasImageUrl"
+        download="filtered_image.png"
+        >
           Download
         </a>
       </div>
@@ -32,7 +35,7 @@ import useCanvas from "@/composables_or_hooks/use-canvas";
 
 const filters=["oceanic", "vintage", "rosetint"];
 const store = useImageStore();
-// filterImage was added last in the coursea, and canvasImageURL even later :D
+// filterImage was added last in the coursea, and canvasImageURL even later together with the Download button updated above at line 20 and 21
 const { canvasEl, loadImage, drawOriginalImage, filterImage, canvasImageUrl } = useCanvas();
 const { reader } = useReader(store.file, () => {
   if(!reader.result) return;
